@@ -10,8 +10,19 @@ import SwiftUI
 @main
 struct Clipboard_NotificationsApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("Clipboard Notifications", image: "MenuBarIcon") {
+            MenuBarMenu()
         }
+    }
+}
+
+class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
+    @Published var userId: String?
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        StateManager.shared.appDelegate = self
+        
+        let clipboardMonitor = ClipboardMonitor()
+        clipboardMonitor.startMonitoring()
     }
 }
