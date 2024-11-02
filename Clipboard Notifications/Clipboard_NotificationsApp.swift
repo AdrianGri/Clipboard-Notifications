@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct Clipboard_NotificationsApp: App {
+    @NSApplicationDelegateAdaptor var appDelegate: AppDelegate
+    
     var body: some Scene {
         MenuBarExtra("Clipboard Notifications", image: "MenuBarIcon") {
             MenuBarMenu()
